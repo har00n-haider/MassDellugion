@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/GameManager.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Tile.tscn" type="PackedScene" id=5]
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 13, 0.5, 13 )
+
+[node name="Level" type="Spatial"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "	"
+}
+enemy = ExtResource( 3 )
+enemySpawnRate = 0.5
+
+[node name="EnemySpawnVolume" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.949, 0 )
+shape = SubResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95899, 1.28678, 0 )
+
+[node name="Stage" type="Spatial" parent="."]
+
+[node name="Floor" parent="Stage" instance=ExtResource( 5 )]
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, -0.180504, 1.90735e-06, 0.00472641 )
+
+[node name="Wall1" parent="Stage" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 30, -29.6339, 1.99765, 0.57085 )
+
+[node name="Wall2" parent="Stage" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 30, 28.237, 1.99765, 0.57085 )
+
+[node name="Wall3" parent="Stage" instance=ExtResource( 5 )]
+transform = Transform( 1.91069e-15, 4.37114e-08, 30, 1, -4.37114e-08, 0, 4.37114e-08, 1, -1.31134e-06, -0.227665, 1.99765, 30.2768 )
+
+[node name="Wall4" parent="Stage" instance=ExtResource( 5 )]
+transform = Transform( 1.91069e-15, 4.37114e-08, 30, 1, -4.37114e-08, 0, 4.37114e-08, 1, -1.31134e-06, -0.227665, 1.99765, -29.8925 )
+
+[node name="Enemy bullet" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.963308, 0, 0.268399, 0, 1, 0, -0.268399, 0, -0.963308, 21.1998, 2.15448, 8.77429 )

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Bullet.cs" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.3
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.3
+height = 0.6
+radial_segments = 20
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.968627, 0.933333, 0.376471, 1 )
+
+[node name="Enemy bullet" type="RigidBody" groups=["Bullet"]]
+mode = 3
+script = ExtResource( 1 )
+speed = 5.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0.000450809, -0.000378866, -0.000450579, 1, 0.000595965, 0.00037914, -0.000595791, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Model" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
